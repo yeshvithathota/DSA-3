@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntelliCheck - AI Spell Checker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <span>✦</span> IntelliCheck
+        </div>
+
+        <nav>
+            <a href="#checker">Spell Checker</a>
+            <a href="#about">About</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-text">
+                <p class="tag">INTELLIGENT SPELL CHECKER</p>
+
+                <h1>
+                    Write better.<br>
+                    <span>Spell smarter.</span>
+                </h1>
+
+                <p class="description">
+                    Find spelling mistakes instantly and get intelligent
+                    correction suggestions using Levenshtein Edit Distance.
+                </p>
+
+                <a href="#checker" class="start-btn">
+                    Start Checking →
+                </a>
+            </div>
+
+            <div class="hero-card">
+                <div class="floating-icon">✓</div>
+
+                <h3>Smart Correction</h3>
+                <p>
+                    Detect mistakes and find the closest matching words
+                    from our dictionary.
+                </p>
+
+                <div class="mini-result">
+                    <span class="wrong">recieve</span>
+                    <span>→</span>
+                    <span class="correct">receive</span>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SPELL CHECKER -->
+        <section id="checker" class="checker-section">
+
+            <div class="section-heading">
+                <p class="tag">SPELL CHECKER</p>
+                <h2>Check your text</h2>
+                <p>
+                    Enter your text below and let IntelliCheck find
+                    spelling errors for you.
+                </p>
+            </div>
+
+            <div class="checker-container">
+
+                <div class="input-area">
+
+                    <div class="box-header">
+                        <span>Your Text</span>
+                        <span id="wordCount">0 words</span>
+                    </div>
+
+                    <textarea
+                        id="textInput"
+                        placeholder="Type or paste your text here...
+
+Example:
+I recieve a mesage from my frend yesterday."
+                    ></textarea>
+
+                    <div class="buttons">
+                        <button id="checkBtn" class="primary-btn">
+                            🔍 Check Spelling
+                        </button>
+
+                        <button id="clearBtn" class="secondary-btn">
+                            Clear
+                        </button>
+                    </div>
+
+                </div>
+
+
+                <div class="results-area">
+
+                    <div class="box-header">
+                        <span>Results</span>
+                        <span id="errorCount">0 errors</span>
+                    </div>
+
+                    <div id="results">
+                        <div class="empty-result">
+                            <div class="empty-icon">✓</div>
+                            <h3>Ready to check</h3>
+                            <p>
+                                Your spelling results will appear here.
+                            </p>
+                        </div>
+                    </div>
+
+                    <button
+                        id="correctAllBtn"
+                        class="correct-all-btn"
+                        style="display:none;"
+                    >
+                        ✓ Correct All
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- HOW IT WORKS -->
+        <section class="how-section">
+
+            <div class="section-heading">
+                <p class="tag">HOW IT WORKS</p>
+                <h2>Simple. Smart. Effective.</h2>
+            </div>
+
+            <div class="steps">
+
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <h3>Enter Text</h3>
+                    <p>
+                        Type or paste your text into the spell checker.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <h3>Compare Words</h3>
+                    <p>
+                        Each word is compared with our dictionary using
+                        Levenshtein Edit Distance.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <h3>Get Suggestions</h3>
+                    <p>
+                        The closest matching words are ranked and shown
+                        as correction suggestions.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ABOUT -->
+        <section id="about" class="about-section">
+
+            <div class="about-content">
+
+                <p class="tag">ABOUT THE PROJECT</p>
+
+                <h2>
+                    Powered by<br>
+                    <span>Levenshtein Distance</span>
+                </h2>
+
+                <p>
+                    IntelliCheck uses the Levenshtein Edit Distance algorithm
+                    to calculate the minimum number of insertions, deletions,
+                    and substitutions required to transform one word into
+                    another.
+                </p>
+
+                <div class="operations">
+
+                    <div>
+                        <strong>I</strong>
+                        <span>Insertion</span>
+                    </div>
+
+                    <div>
+                        <strong>D</strong>
+                        <span>Deletion</span>
+                    </div>
+
+                    <div>
+                        <strong>S</strong>
+                        <span>Substitution</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>
+            © 2026 IntelliCheck · Intelligent Spell Checker
+        </p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
