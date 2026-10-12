@@ -1,0 +1,16 @@
+INTELLICHECK — QUICK START
+
+1. Extract this ZIP.
+2. Open the extracted IntelliCheck_Full_Project folder in VS Code.
+3. Double-click Run-IntelliCheck.bat.
+4. Open http://localhost:8080 in Edge or Chrome.
+5. Keep the black terminal window open while using the website.
+
+ADMIN DEMO LOGIN
+Email: admin@intellicheck.com
+Password: Admin@12345
+
+Customers use Create account on the sign-in page.
+
+No node_modules or npm install is needed. Java JDK is required.
+The app creates the data folder and local user/history files automatically.

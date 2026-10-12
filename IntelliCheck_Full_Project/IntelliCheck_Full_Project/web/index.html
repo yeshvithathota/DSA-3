@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IntelliCheck — Smart Spell Correction</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div id="toast" class="toast" role="status"></div>
+<main id="authView" class="auth-shell">
+  <section class="auth-visual">
+    <div class="brand"><span class="brand-mark">✳</span> IntelliCheck</div>
+    <div class="visual-copy">
+      <p class="eyebrow">WRITE WITH CONFIDENCE</p>
+      <h1>Your words,<br><em>refined.</em></h1>
+      <p>Intelligent spelling suggestions powered by Java and Levenshtein Edit Distance.</p>
+      <div class="visual-proof"><span class="proof-check">✓</span><span>Smart corrections, clear results<br><small>Built for everyday writing</small></span></div>
+    </div>
+    <div class="visual-bottom">SPELL BETTER. COMMUNICATE CLEARER.</div>
+  </section>
+  <section class="auth-panel">
+    <div class="auth-card">
+      <div class="mobile-brand brand"><span class="brand-mark">✳</span> IntelliCheck</div>
+      <div class="auth-tabs"><button class="tab active" id="loginTab">Sign in</button><button class="tab" id="registerTab">Create account</button></div>
+      <div id="loginFormWrap">
+        <p class="eyebrow">WELCOME BACK</p><h2>Sign in to your workspace</h2><p class="muted">Your personal writing assistant is ready.</p>
+        <form id="loginForm">
+          <label>Email address<input name="email" type="email" autocomplete="username" placeholder="you@example.com" required></label>
+          <label>Password<input name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required></label>
+          <button class="btn btn-primary full" type="submit">Sign in <span>→</span></button>
+        </form>
+        <div class="demo-note"><strong>Admin demo access</strong><span>Email: admin@intellicheck.com</span><span>Password: Admin@12345</span><small>Change these demo credentials before any public deployment.</small></div>
+        <p class="auth-switch">New to IntelliCheck? <button class="link-button" id="toRegister">Create an account</button></p>
+      </div>
+      <div id="registerFormWrap" hidden>
+        <p class="eyebrow">GET STARTED</p><h2>Create your account</h2><p class="muted">Save your checks and revisit recent results.</p>
+        <form id="registerForm">
+          <label>Full name<input name="name" type="text" autocomplete="name" placeholder="Your name" minlength="2" maxlength="60" required></label>
+          <label>Email address<input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label>
+          <label>Password<input name="password" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" required></label>
+          <button class="btn btn-primary full" type="submit">Create account <span>→</span></button>
+        </form>
+        <p class="auth-switch">Already have an account? <button class="link-button" id="toLogin">Sign in</button></p>
+      </div>
+      <p class="security-note"><span>▣</span> Passwords are securely hashed on the Java server.</p>
+    </div>
+  </section>
+</main>
+
+<div id="appView" class="app-shell" hidden>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">✳</span> IntelliCheck</div>
+    <div class="workspace-label">WORKSPACE</div>
+    <button class="nav-item active" data-page="checker"><span>✎</span> Spell checker</button>
+    <button class="nav-item" data-page="history"><span>◷</span> My activity</button>
+    <button class="nav-item admin-only" data-page="admin" hidden><span>▦</span> Admin dashboard</button>
+    <div class="sidebar-bottom"><div class="profile"><div class="avatar" id="avatar">U</div><div class="profile-info"><strong id="sideName">User</strong><span id="sideRole">Customer</span></div><button id="logoutBtn" class="logout" title="Sign out" aria-label="Sign out">↗</button></div><div class="sidebar-foot">INTELLICHECK · JAVA EDITION</div></div>
+  </aside>
+  <section class="main-area">
+    <header class="topbar"><div><span class="topbar-kicker" id="pageKicker">YOUR WRITING SPACE</span><h2 id="pageTitle">Spell checker</h2></div><div class="top-user"><span class="online-dot"></span><span id="topEmail">user@example.com</span></div></header>
+    <div class="content">
+      <section id="checkerPage" class="page">
+        <div class="welcome-row"><div><p class="eyebrow">SMART WRITING, SIMPLIFIED</p><h1>Make every word <em>count.</em></h1><p class="muted">Paste your text and let IntelliCheck find spelling issues.</p></div><div class="status-pill"><span class="online-dot"></span> Java engine ready</div></div>
+        <div class="stats-row"><article class="stat-card"><span class="stat-icon lavender">Aa</span><div><span>Dictionary words</span><strong id="dictStat">—</strong></div></article><article class="stat-card"><span class="stat-icon peach">✓</span><div><span>Words checked</span><strong id="wordsStat">0</strong></div></article><article class="stat-card"><span class="stat-icon mint">✦</span><div><span>Issues found</span><strong id="issuesStat">0</strong></div></article></div>
+        <div class="checker-grid">
+          <article class="surface editor-card"><div class="surface-heading"><div><span class="section-kicker">EDITOR</span><h3>Your text</h3></div><span class="word-count" id="wordCount">0 words</span></div><textarea id="textInput" maxlength="12000" placeholder="Start writing or paste text here…&#10;&#10;Example: I recieve a mesage from my frend."></textarea><div class="editor-footer"><span id="charCount">0 / 12,000 characters</span><div><button class="btn btn-quiet" id="clearBtn" type="button">Clear</button><button class="btn btn-primary" id="checkBtn" type="button">Check spelling <span>→</span></button></div></div></article>
+          <article class="surface results-card"><div class="surface-heading"><div><span class="section-kicker">ANALYSIS</span><h3>Suggestions</h3></div><span class="result-count" id="errorCount">Ready</span></div><div id="results" class="results-list"><div class="empty-state"><div class="empty-art">Aa</div><strong>Your results will appear here</strong><p>Run a check to see ranked suggestions and edit distance.</p></div></div><div class="results-bottom"><button id="correctAllBtn" class="btn btn-primary full" hidden>Apply top suggestions <span>✓</span></button></div></article>
+        </div>
+        <div class="algorithm-note"><div class="algorithm-symbol">ƒ(x)</div><div><strong>How the engine works</strong><p>Java calculates Levenshtein Edit Distance — the minimum insertions, deletions and substitutions needed to transform one word into another. Candidates are ranked by the smallest distance.</p></div><span class="algorithm-tag">DYNAMIC PROGRAMMING</span></div>
+      </section>
+      <section id="historyPage" class="page" hidden><div class="page-intro"><p class="eyebrow">YOUR ACTIVITY</p><h1>Recent checks</h1><p class="muted">Your latest spell-check sessions are saved on this device.</p></div><div class="surface table-surface"><div class="table-heading"><h3>Check history</h3><span class="section-kicker">LATEST FIRST</span></div><div id="historyList"></div></div></section>
+      <section id="adminPage" class="page" hidden><div class="page-intro"><p class="eyebrow">ADMINISTRATION</p><h1>System overview</h1><p class="muted">Live account and usage information from this application's local data store.</p></div><div class="admin-stats" id="adminStats"></div><div class="surface table-surface"><div class="table-heading"><h3>Registered accounts</h3><span class="section-kicker">ACCOUNT DIRECTORY</span></div><div id="usersTable"></div></div><div class="surface table-surface admin-recent"><div class="table-heading"><h3>Recent activity</h3><span class="section-kicker">LATEST CHECKS</span></div><div id="adminRecent"></div></div></section>
+    </div>
+    <footer class="app-footer">IntelliCheck <span>·</span> Your writing stays in your local application data store.</footer>
+  </section>
+</div>
+<script src="/script.js"></script>
+</body>
+</html>
